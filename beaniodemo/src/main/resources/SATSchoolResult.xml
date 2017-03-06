@@ -1,0 +1,41 @@
+<beanio xmlns="http://www.beanio.org/2012/03">
+    <stream name="satschoolresult" format="csv">
+        <parser>
+            <property name="delimiter" value="," />
+            <property name="lineSeparator" value="\n" />
+            <property name="whitespaceAllowed" value="true" />
+        </parser>
+        <record name="header" class="map" maxOccurs="1">
+            <field name="dbn" ignore="true" literal="DBN"/>
+            <field name="schoolName" ignore="true" literal="School Name"/>
+            <field name="numberOfTestTaker" ignore="true" literal="Number of Test Takers"/>
+            <field name="criticalReadingMean" ignore="true" literal="Critical Reading Mean"/>
+            <field name="mathematicsMean" ignore="true" literal="Mathematics Mean"/>
+            <field name="writingMean" ignore="true" literal="Writing Mean"/>
+        </record>
+        <record name="result" minOccurs="0" maxOccurs="unbounded"
+                class="dev.kyuelin.bigdeng.beaniodemo.model.SATSchoolResult">
+            <field name="dbn"/>
+            <field name="schoolName"/>
+            <field name="numberOfTestTaker"/>
+            <field name="criticalReadingMean"/>
+            <field name="mathematicsMean"/>
+            <field name="writingMean"/>
+        </record>
+<!--
+        <typeHandler name="personTypeHandler" class="com.mycompany.app10.PersonTypeHandler"/>
+        <record name="header" class="map" maxOccurs="1">
+            &lt;!&ndash; 'rid' indicates this field is used to identify the record &ndash;&gt;
+            <field name="recordType" rid="true" literal="H" />
+            &lt;!&ndash; 'format' can be used to provide Date and Number formats &ndash;&gt;
+            <field name="fileDate" type="date" format="yyyy-MM-dd" />
+        </record>
+        <record name="detail" minOccurs="0" maxOccurs="unbounded"
+                class="com.mycompany.app10.Person">
+            <field name="firstName" />
+            <field name="surname" />
+            <field name="type" typeHandler="personTypeHandler" type="com.mycompany.app10.PersonType" />
+        </record>
+-->
+    </stream>
+</beanio>
